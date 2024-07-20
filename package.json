@@ -1,0 +1,26 @@
+{
+  "name": "@cavcon/react-gears",
+  "version": "0.0.1",
+  "description": "A React component for an animated gear",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
