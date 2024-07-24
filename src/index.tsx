@@ -15,17 +15,17 @@ const trunc = (x: number): any => {
 const path = (
   toothCount: number,
   toothHeight: number,
-  outSideDegrees: number,
+  outsideDegrees: number,
   insideDegrees: number,
   holeRadius: string | number
 ) => {
   const pitchAngle = 360 / toothCount;
-  const rampAngle = (pitchAngle - outSideDegrees - insideDegrees) / 2;
+  const rampAngle = (pitchAngle - outsideDegrees - insideDegrees) / 2;
   const r = 1 - toothHeight;
   let text = "M0,-1";
   let angle = 0;
   for (let i = 0; i < toothCount; i++) {
-    angle += outSideDegrees / 2;
+    angle += outsideDegrees / 2;
     text += "A1,1,0,0,1," + sin(angle) + "," + -cos(angle);
     angle += rampAngle;
     text += "L" + trunc(r * sin(angle)) + "," + trunc(-r * cos(angle));
@@ -41,7 +41,7 @@ const path = (
       trunc(-r * cos(angle));
     angle += rampAngle;
     text += "L" + sin(angle) + "," + -cos(angle);
-    angle += outSideDegrees / 2;
+    angle += outsideDegrees / 2;
     text += "A1,1,0,0,1," + sin(angle) + "," + -cos(angle);
   }
 
@@ -73,7 +73,7 @@ const DEFAULT_HOLERADIUS = 0.3;
 export interface GearProps {
   numTeeth: number | undefined;
   toothHeight: number | undefined;
-  outSideDegrees: number | undefined;
+  outsideDegrees: number | undefined;
   insideDegrees: number | undefined;
   holeRadius: number | undefined;
 }
@@ -81,7 +81,7 @@ export interface GearProps {
 export const Gear: React.FC<GearProps> = ({
   numTeeth,
   toothHeight,
-  outSideDegrees,
+  outsideDegrees,
   insideDegrees,
   holeRadius,
 }) => {
@@ -89,14 +89,14 @@ export const Gear: React.FC<GearProps> = ({
 
   numTeeth ??= DEFAULT_NUMTEETH;
   toothHeight ??= DEFAULT_TOOTHHEIGHT;
-  outSideDegrees ??= DEFAULT_OUTSIDEDEGREES;
+  outsideDegrees ??= DEFAULT_OUTSIDEDEGREES;
   insideDegrees ??= DEFAULT_INSIDEDEGREES;
   holeRadius ??= DEFAULT_HOLERADIUS;
 
   const pathString = path(
     numTeeth,
     toothHeight,
-    outSideDegrees,
+    outsideDegrees,
     insideDegrees,
     holeRadius
   );
